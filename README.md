@@ -1,1 +1,1 @@
-# Advanced_Compact_MOSFET
+# Advanced Compact MOSFET model
