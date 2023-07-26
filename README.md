@@ -6,6 +6,6 @@ The model is available for commercial and open-source EDA tools due to the versa
 This repository presents the Verilog-A code for the NMOS and PMOS transistors, documentation about the model through papers and reports, and comparison of the model with PDK models or measurements of the three available open-source process (Sky130, IHP, and GF180).
 
 
-If you use the ACM2V0 in your research, please cite the paper.
+Researchers are kindly requested to include the following citation if the ACM2V0 model is used in their research.
 
 D. G. Alves Neto, C. M. Adornes, G. Maranhão, et al. "A 5-DC-Parameter MOSFET Model for Circuit Simulation in QucsStudio and Spectre", 2023 21st IEEE Interregional NEWCAS Conference, Edinburgh, Scotland, June 26-28, 2023.
