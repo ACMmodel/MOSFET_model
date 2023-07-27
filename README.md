@@ -6,7 +6,7 @@ As of July 2023, this repository targets to release all future versions and tech
 
 # Current Status
 >
-> the authors of this repository are treating the current content as a **pre-release**
+> The authors of this repository are treating the current content as a **pre-release**
 >
 
 # About ACM
