@@ -23,7 +23,7 @@ D. G. Alves Neto, C. M. Adornes, G. Maranhão, et al. "A 5-DC-Parameter MOSFET M
 
 ## Contact
 
-Requests for more information about ACM model and other informations can be emailed to [enter email]
+Requests for more information about ACM model or related informations can be emailed to [enter email]
 
 # License
 
