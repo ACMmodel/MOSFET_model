@@ -54,7 +54,7 @@ format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
 .lib $::180MCU_MODELS/sm141064.ngspice typical
-.model NMOS_ACM nmos_5PM
+.model NMOS_ACM nmos_ACM
 "}
 C {devices/code_shown.sym} -780 -520 0 0 {name=NGSPICE only_toplevel=true
 value="
