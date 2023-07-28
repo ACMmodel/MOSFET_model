@@ -13,5 +13,5 @@ Please note that it is essential to have the respective PDK installed and also t
 
 # ACM2V0 and GF180mcu on Google Colaboratory
 
-Another convenient method to utilize the [ACM2V0](/Verilog-A/) model is on Google Colaboratory. The [environment](colab_ngspice/GF180MCU_ACM2V0.ipynb) is pre-equipped with ngspice, the ".osdi" conversion tool, [OpenVAF]((/Verilog-A/openvaf/readme.md)), and the installation of the GF180mcu PDK. Furthermore, an example netlist is already available, along with a Python script for plotting purposes.
+Another convenient method to utilize the [ACM2V0](/Verilog-A/) model is on Google Colaboratory. The [colab notebook environment](GF180MCU_ACM2V0.ipynb) is pre-equipped with ngspice, the ".osdi" conversion tool, [OpenVAF]((/Verilog-A/openvaf/readme.md)), and the installation of the GF180mcu PDK. Furthermore, an example netlist is already available, along with a Python script for plotting purposes.
 
