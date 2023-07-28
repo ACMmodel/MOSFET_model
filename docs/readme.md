@@ -36,3 +36,25 @@ Abstract:
 > and simulated using either the 4PM or the BSIM model. The four-parameter model was simulated
 > in many sorts of circuits with very satisfactory results in the low-voltage cases. As the ultra-lowvoltage (ULV) domain is expanding due to applications, such as the internet of things and wearable
 > circuits, so is the use of a simplified ULV MOSFET model
+
+
+[2018 - The compact all-region MOSFET model theory and applications](/docs/2018_The_compact_all-region_MOSFET_model_theory_and_applications.pdf)
+
+Abstract: 
+> A compact presentation of the basic theory of the
+> MOS transistor is given. Instead of the usual approach of
+> furnishing separate analytical formulas for the strong and weak
+> inversion regions of the MOS transistor, we provide simple
+> formulas which are valid in all operating regions, including
+> moderate inversion. We review ultra-low-power circuits
+> operating near the threshold condition that allows the automatic
+> extraction of the specific current IS and the threshold voltage VT
+> of MOS transistors, which are the most fundamental parameters
+> for technology characterization, circuit design, and testing.
+
+[2000 - Advanced compact model for short-channel MOS transistors](/docs/2000_Advanced_compact_model_for_short-channel_MOS_transistors.pdf)
+
+Abstract: 
+> This paper introduces the advanced compact MOSFET (ACM) model, a physically based model of the MOS transistor, derived from the long-channel transistor model presented in (1). The ACM model is composed of very simple expressions, is valid for any inversion level, conserves charge > > and preserves the source-drain symmetry of the transistor. Short-channel effects are included using a compact and physical approach. The performance of the ACM model in benchmark tests demonstrates its suitability for circuit simulation.
+
+
