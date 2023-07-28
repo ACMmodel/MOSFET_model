@@ -3,7 +3,7 @@
 This section presents selected technical documents about the ACM model:
 
 
-[A 5-DC-parameter MOSFET model for circuit simulation in QucsStudio and Spectre](/docs/2023_A_5-DC-parameter_MOSFET_model_for_circuit_simulation_in_QucsStudio_and_Spectre.pdf)
+[2023 - A 5-DC-parameter MOSFET model for circuit simulation in QucsStudio and Spectre](/docs/2023_A_5-DC-parameter_MOSFET_model_for_circuit_simulation_in_QucsStudio_and_Spectre.pdf)
 
  Abstract: 
 > A minimalist MOSFET model for circuit simulation
@@ -17,3 +17,22 @@ This section presents selected technical documents about the ACM model:
 > 5-DC-parameter MOSFET model shows good matching with the
 > simulation using the BSIM model, for the benefit of a much
 > a simpler set of DC parameters.
+
+
+
+
+
+
+[2022 - Bridging the gap between design and simulation of low-voltage CMOS circuits](/docs/2022_Bridging_the_Gap_between_Design_and_Simulation_of_Low-Voltage_CMOS_Circuits.pdf)
+
+Abstract: 
+> This work proposes a truly compact MOSFET model that contains only four parameters
+> to assist an integrated circuits (IC) designer in a design by hand. The four-parameter model (4PM)
+> is based on the advanced compact MOSFET (ACM) model and was implemented in Verilog-A to
+> simulate different circuits designed with the ACM model in Verilog-compatible simulators. Being
+> able to simulate MOS circuits through the same model used in a hand design benefits designers
+> in understanding how the main MOSFET parameters affect the design. Herein, the classic CMOS
+> inverter, a ring oscillator, a self-biased current source and a common source amplifier were designed
+> and simulated using either the 4PM or the BSIM model. The four-parameter model was simulated
+> in many sorts of circuits with very satisfactory results in the low-voltage cases. As the ultra-lowvoltage (ULV) domain is expanding due to applications, such as the internet of things and wearable
+> circuits, so is the use of a simplified ULV MOSFET model
