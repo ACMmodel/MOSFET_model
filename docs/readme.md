@@ -35,7 +35,7 @@ Abstract:
 > inverter, a ring oscillator, a self-biased current source and a common source amplifier were designed
 > and simulated using either the 4PM or the BSIM model. The four-parameter model was simulated
 > in many sorts of circuits with very satisfactory results in the low-voltage cases. As the ultra-lowvoltage (ULV) domain is expanding due to applications, such as the internet of things and wearable
-> circuits, so is the use of a simplified ULV MOSFET model
+> circuits, so is the use of a simplified ULV MOSFET model.
 
 
 [2018 - The compact all-region MOSFET model theory and applications](/docs/2018_The_compact_all-region_MOSFET_model_theory_and_applications.pdf)
