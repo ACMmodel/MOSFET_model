@@ -3,7 +3,7 @@
 This section presents selected technical documents about the ACM model:
 
 
-2023 - A 5-DC-parameter MOSFET model for circuit simulation in QucsStudio and Spectre - To be publish in IEEEexplore in August.
+2023 - A 5-DC-parameter MOSFET model for circuit simulation in QucsStudio and Spectre - To be publish in IEEEXplore in August.
 
  Abstract: 
 > A minimalist MOSFET model for circuit simulation
