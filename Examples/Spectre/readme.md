@@ -1,4 +1,4 @@
-# Simulation of the ACM model using circuit simulator Spectre (working in progress)
+# Simulation of the ACM model using circuit simulator Spectre 
 
 Verilog-A is integrated into Cadence Virtuoso and situated in Spectre for easy modeling and verification of testing or other components. 
 
