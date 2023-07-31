@@ -3,7 +3,7 @@
 This section presents selected technical documents about the ACM model:
 
 
-[2023 - A 5-DC-parameter MOSFET model for circuit simulation in QucsStudio and Spectre](/docs/2023_A_5-DC-parameter_MOSFET_model_for_circuit_simulation_in_QucsStudio_and_Spectre.pdf)
+2023 - A 5-DC-parameter MOSFET model for circuit simulation in QucsStudio and Spectre - To be publish in IEEEexplore in August.
 
  Abstract: 
 > A minimalist MOSFET model for circuit simulation
@@ -23,7 +23,7 @@ This section presents selected technical documents about the ACM model:
 
 
 
-[2022 - Bridging the gap between design and simulation of low-voltage CMOS circuits](/docs/2022_Bridging_the_Gap_between_Design_and_Simulation_of_Low-Voltage_CMOS_Circuits.pdf)
+[2022 - Bridging the gap between design and simulation of low-voltage CMOS circuits](https://www.mdpi.com/2079-9268/12/2/34)
 
 Abstract: 
 > This work proposes a truly compact MOSFET model that contains only four parameters
@@ -38,7 +38,7 @@ Abstract:
 > circuits, so is the use of a simplified ULV MOSFET model.
 
 
-[2018 - The compact all-region MOSFET model theory and applications](/docs/2018_The_compact_all-region_MOSFET_model_theory_and_applications.pdf)
+[2018 - The compact all-region MOSFET model theory and applications](https://ieeexplore.ieee.org/document/8585657)
 
 Abstract: 
 > A compact presentation of the basic theory of the
@@ -52,7 +52,7 @@ Abstract:
 > of MOS transistors, which are the most fundamental parameters
 > for technology characterization, circuit design, and testing.
 
-[2000 - Advanced compact model for short-channel MOS transistors](/docs/2000_Advanced_compact_model_for_short-channel_MOS_transistors.pdf)
+[2000 - Advanced compact model for short-channel MOS transistors](https://ieeexplore.ieee.org/document/852650)
 
 Abstract: 
 > This paper introduces the advanced compact MOSFET (ACM) model, a physically based model of the MOS transistor, derived from the long-channel transistor model presented in (1). The ACM model is composed of very simple expressions, is valid for any inversion level, conserves charge > > and preserves the source-drain symmetry of the transistor. Short-channel effects are included using a compact and physical approach. The performance of the ACM model in benchmark tests demonstrates its suitability for circuit simulation.
