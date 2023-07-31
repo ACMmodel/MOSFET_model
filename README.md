@@ -18,7 +18,7 @@ This repository presents the Verilog-A code for the NMOS and PMOS transistors, d
 
 Researchers are kindly requested to include the following citation if the ACM2V0 model is used in their research.
 
-D. G. Alves Neto, C. M. Adornes, G. Maranhão, et al. "[A 5-DC-Parameter MOSFET Model for Circuit Simulation in QucsStudio and Spectre](/docs/2023_A_5-DC-parameter_MOSFET_model_for_circuit_simulation_in_QucsStudio_and_Spectre.pdf)", 2023 21st IEEE Interregional NEWCAS Conference, Edinburgh, Scotland, June 26-28, 2023.
+D. G. Alves Neto, C. M. Adornes, G. Maranhão, et al. "A 5-DC-Parameter MOSFET Model for Circuit Simulation in QucsStudio and Spectre", 2023 21st IEEE Interregional NEWCAS Conference, Edinburgh, Scotland, June 26-28, 2023. To be published in IEEE Xplore in August
 
 
 ## Contact
