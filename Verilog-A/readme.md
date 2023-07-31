@@ -1,5 +1,5 @@
-# ACM in Verilog-A language for circuit simulation
+# ACM model in Verilog-A language for circuit simulation
 
-The ACM can be used in open-source or commercial circuit simulators due to the universality of the Verilog-A language.
+The ACM model can be used in open-source or commercial circuit simulators due to the universality of the Verilog-A language.
 
 Here you found the verilog-a files of the [NMOS](/Verilog-A/NMOS_ACM_2V0.va) and [PMOS](/Verilog-A/PMOS_ACM_2V0.va) transistors.
