@@ -1,0 +1,291 @@
+//*****************************************************************************
+// *  ACM PMOS model (Verilog-A) - 5PM                                        *
+// *  07/2023    V2.0.0                                                       *
+//*****************************************************************************
+
+// ****************************************************************************
+// * Copyright under the ECL-2.0 license                                      *
+// * Universidade Federal de Santa Catarina                                   *  
+// *                                                                          *
+// * Current developers:  Deni Germano Alves Neto (Doctoral student, UFSC)    *
+// *                      Cristina Missel Adornes (Doctoral student, UFSC)    *
+// *                      Gabriel Maranhao        (Doctoral student, UFSC)    *
+// *                                                                          * 
+// * Project Supervisors:  Prof. Carlos Galup-Montoro                         *
+// *                       Prof. Marcio Cherem Schneider                      *
+// ****************************************************************************
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+// function of the algorithm 443 to calculate de normalize charge densities
+`define algo_443(Z,qn) \
+	if(Z < 0.7385) begin \
+		numeratorD = Z + (4.0/3.0)*Z*Z; \
+		denominatorD = 1.0 + (7.0/3.0)*Z+(5.0/6.0)*Z*Z; \
+		WnD = numeratorD/denominatorD; \
+	end	else begin \
+		numeratorD = ln(Z)*ln(Z)+2.0*ln(Z)-3.0; \
+		denominatorD = 7.0*ln(Z)*ln(Z) + 58.0*ln(Z) +127.0; \
+		WnD = ln(Z) - 24.0*(numeratorD/denominatorD); \
+	end \
+ZnD = ln(Z) -WnD - ln(WnD); \
+TermD = ZnD/(1.0 + WnD); \
+numeratorED = 2.0*(1.0+WnD)*(1.0+WnD+(2.0/3.0)*ZnD)-ZnD; \
+denominatorED = 2.0*(1.0+WnD)*(1.0+WnD+(2.0/3.0)*ZnD)-2*ZnD; \
+EnD = TermD*(numeratorED/denominatorED); \
+qn = (WnD*(1+EnD)); \
+
+module pmos_ACM(D, G, S, B);
+
+// pinout definition
+inout D,G,S,B;
+
+// electrical nodes definition
+electrical D,G,S,B;
+
+//Branches
+branch(B,G) BBG;
+branch(B,D) BBD;
+branch(B,S) BBS;
+branch(S,D) BSD;
+branch(D,G) BDG;
+branch(S,G) BSG;
+
+// Device input variables
+(*desc= "Channel width", units = "m", type = "instance"*) parameter real W = 1e-6 from [0:inf];
+(*desc= "Channel length", units = "m", type = "instance"*) parameter real L = 1e-6 from [0:inf];
+(*desc= "Drain diffusion area", units = "m^2", type = "instance"*)  parameter real AD = 2e-12 from [0:inf];
+(*desc= "Source diffusion area", units = "m^2", type = "instance"*) parameter real AS = 2e-12 from [0:inf];
+(*desc= "Drain diffusion perimeter", units = "m", type = "instance"*)  parameter real PD = 10e-6 from [0:inf];
+(*desc= "Source diffusion perimeter", units = "m", type = "instance"*) parameter real PS = 10e-6 from [0:inf];
+(*desc= "Number of transistor in parallel", units = "", type = "instance"*) parameter real m = 1 from [1:inf];
+
+// DC related parameters
+(*desc= "Threshold voltage", units = "V", type = "instance"*) parameter real VT0 = 0.5 from [0:inf];
+(*desc= "Specific current", units = "A", type = "instance"*) parameter real IS = 5e-6 from [0:inf];
+(*desc= "Slope factor", type = "instance"*) parameter real n = 1.3 from [1:3];
+(*desc= "Sigma", type = "instance"*) parameter real sigma = 0.03 from [0:inf];
+(*desc= "Zeta", type = "instance"*) parameter real zeta = 0.05 from [0:inf];
+
+// Junction capacitance parameters
+(*desc= "Zero bias junction capacitance", units = "F/m^2", type = "instance"*)  parameter real Cj0 = 4e-3 from [0:inf];
+(*desc= "Side-wall zero bias junction capacitance", units = "F/m^2", type = "instance"*)  parameter real Cj0sw = 4e-3 from [0:inf];
+(*desc= "Drain(Source) bottom junction capacitance gradient coeficient", units = "", type = "instance"*)  parameter real xd_mj = 0.5 from [0:inf];
+(*desc= "Side-wall drain(Source) bottom junction capacitance gradient coeficient", units = "", type = "instance"*)  parameter real xd_mjsw = 0.5 from [0:inf];
+(*desc= "Bulk-junction built-in potential", units = "V", type = "instance"*)  parameter real phi_zero = 0.6 from [0:inf];
+(*desc= "Side-wall bulk-junction built-in potential", units = "V", type = "instance"*)  parameter real phi_zerosw = 0.6 from [0:inf];
+
+// Process related parameters
+(*desc= "Junction depth", units = "m", type = "instance"*)  parameter real xj = 150e-9 from [0:inf];
+(*desc= "Gate overlap", units = "m", type = "instance"*)  parameter real LD = 30e-9 from [0:inf];
+(*desc= "Thickness of oxide", units = "m", type = "instance"*)  parameter real tox = 4e-9 from [0:inf];
+
+//Mismatch related parameters
+(*desc= "Area related threshold voltage mismatch", units = "V*m", type = "instance"*)  parameter real aVT0 = 0 from [-inf:inf];
+(*desc= "Area related gain mismatch", units = "m", type = "instance"*)  parameter real aK = 0 from [0:inf];
+
+//Temperature related parameters
+(*desc= "VT0 fitting temperature coefficient", units = " ", type = "instance"*)  parameter real alphaVT0 = -0.4e-3 from [-1:1];
+(*desc= "IS fitting temperature coefficient", units = " ", type = "instance"*)  parameter real alphaIS = 1.5 from [0:inf];
+(*desc= "Sigma fitting temperature coefficient", units = " ", type = "instance"*)  parameter real alphasigma = 0.3e-6 from [0:inf];
+(*desc= "Zeta fitting temperature coefficient", units = " ", type = "instance"*)  parameter real alphazeta = 0.2e-3 from [0:inf];
+
+//Noise related parameter
+(*desc= "Equivalent density of oxide traps", units = "m^-2", type = "instance"*)  parameter real N_ot = 1e12 from [0:inf];
+
+// Intern variables
+real VP, PhiT, VBD, VBS, VBG, VDG,VSG, VSD, VDS, VBX, VBY;
+real qsat, qidsat, q1, q2,qS, qD;
+real X, Y, numeratorD, denominatorD, TermD, numeratorED, denominatorED, ZnD, EnD, WnD;
+real id, ID, e0, eox, esi, epsi, We;
+real umob,vsat, Cox, kboltz, q_e, ni;
+real gm_frac1, gm_frac2, gm_frac3, gms,gmd, gm;
+real alpha, alpha_frac, alpha_frac2, alpha_frac3;
+real QI, QD, QS, QG, QB, QID, QIS;
+real Cgso, Cgdo, Cgbo, Cbso, Cbdo, Cdso, Csdo;
+real Cgd, Cgs, Cgb, Cbs, Cbd, Cds, Csd, Cm;
+real Cgs_ov, Cgd_ov, Cjdb, Cjsb, Cjdb_sw, Cjsb_sw, Cjsw;
+real qovd, qovs, qjd, qjs;
+real VT0_T, IS_T, sigma_T, zeta_T, Tin, Tref;
+real func_thermal, func_flicker, PSD_thermal, PSD_flicker;
+real gmin;
+
+analog begin
+
+//Constants
+e0 = `P_EPS0; // Vacuum permittivity
+eox = 3.97*e0; // Silicon dioxide permittivity  
+esi = 11.9*e0; // Silicon permittivity 
+Tref = 300.15; // Reference temperature
+q_e = `P_Q; // Elementary charge
+kboltz = `P_K; // Boltzmann constant
+epsi = 0.01; // Constant used for device symmetry 
+gmin = $simparam("gmin",0);// gmin is placed in parallel with drain-bulk and source-bulk current sources to increase the numerical convergence
+We = m*W; // Equivalent W of the parallel devices
+
+//Temperature variation
+PhiT = $vt($temperature); // Thermal voltage
+Tin = $temperature; //Simulator temperature
+VT0_T = VT0 + alphaVT0*(Tin-Tref) + aVT0/sqrt(We*L); // Temperature variation and mismatch on VT0
+IS_T = IS*(1+ ((2-alphaIS)/Tin)*(Tin-Tref)) + (IS*aK)/sqrt(We*L); // Temperature variation and mismatch on IS
+sigma_T = sigma+ alphasigma*(Tin-Tref); // Temperature variation on sigma
+zeta_T = zeta + alphazeta*(Tin-Tref); // Temperature variation on zeta
+
+//Control voltages from branches
+VBG = V(BBG);
+VBD = V(BBD);
+VBS = V(BBS);
+VSD = V(BSD);
+VDG = V(BDG);
+VSG = V(BSG);
+VDS = -VSD;
+VBX = min(VBS,VBD);
+VBY = max(VSD,VDS);
+
+// Intern process parameters
+Cox = eox/tox; // [F/m^2]
+umob = (IS_T*L)/(Cox*n*PhiT*PhiT*We*0.5); //mobility [m^2/V.s]
+vsat = (umob*PhiT)/(L*zeta_T); //[m^2/s]
+
+//Pinch-off voltage
+VP = (VBG - abs(VT0_T) + sigma_T*(VBD+VBS) )/n;
+
+////q1 from algorithm 443 and UCCM_LC
+X = exp(((VP - VBX)/PhiT)+1.0);
+`algo_443(X,q1)
+
+//Calculating qdsat
+qsat = q1 + 1.0 + (1.0/zeta_T) - sqrt(((1+(1/zeta_T))*(1+(1/zeta_T)))+((2*q1)/zeta_T)); 
+
+////q2 from algorithm 443 and UCCM
+Y = (((q1-qsat))*exp(-VBY/PhiT)*exp(q1-qsat));
+`algo_443(Y,q2);
+q2 = q2 + qsat;
+
+//Normalized densities charges for a symmetric model
+	if (V(S,D) >= 0) begin
+	
+		qS = q1;
+		qD = q2;
+	end
+	else begin
+		qD = q1;
+		qS = q2;
+	end
+
+///////////// Calculating Drain Current ID ///////////////////////
+id = ((qD+qS+2.0)/(1.0+ sqrt((zeta_T*(qS-qD))*zeta*((qS-qD))+(epsi*epsi))))*(qS - qD);
+ID = m*IS_T*id;
+I(S,D) <+ ID;
+
+///////////// Transconductances /////////////////////
+qidsat =(zeta_T/2.0)*id;
+
+//gm_frac1 to gm_frac3 are intermediate fractions of the transconductances
+gm_frac1 = (2.0*IS_T)/(PhiT*(1.0+zeta_T*(q1-q2))*(1.0+zeta_T*(q1-q2)));
+gm_frac2 = (1.0+q1)+(zeta_T/2.0)*(((q1-q2)*(q1-q2)));
+gm_frac3 = (1.0+q2)-(zeta_T/2.0)*(((q1-q2)*(q1-q2)));
+gms = gm_frac1*((gm_frac2)*(1.0-(sigma_T/n))*((q1-qidsat)/(1+q1-qidsat))+((gm_frac3)*(sigma_T*n)*((q2-qidsat)/(1+(q2-qidsat))))); //Source transconductance
+gmd = gm_frac1*((gm_frac2)*(sigma_T/n)*((q1-qidsat)/(1+q1-qidsat))+(gm_frac3)*(1.0-(sigma_T/n))*((q2-qidsat)/(1+q2-qidsat))); //Drain transconductance
+gm = (gm_frac1/(n))*((gm_frac2)*((q1-qidsat)/(1+q1-qidsat)) - (gm_frac3)*((q2-qidsat)/(1+q2-qidsat))); //Gate transconductance
+
+//////// Dynamic model ////////////
+alpha = (1.0 + q2-qidsat)/(1 + q1-qidsat); //linearity factor
+
+//////////////Charges////////////
+QI = -n*PhiT*Cox*We*L*((2.0/3.0)*(((1+alpha+alpha*alpha)/(1+alpha))*(qS+1.0-qidsat)) - 1.0 ) - (L*ID)/(vsat);
+QB = -((n-1)/(n))*QI;
+QG = -QB-QI;
+QD = -n*PhiT*Cox*We*L*((2.0/15.0)*(qS+1.0-qidsat)*((2.0+4.0*alpha+6.0*alpha*alpha+3.0*alpha*alpha*alpha)/((1+alpha)*(1+alpha)))- (1.0/2.0)) -(L*ID)/(2.0*vsat);
+QS = QI - QD;
+
+////////////// Charges densities ////////////////
+QID = qD*(-n*Cox*PhiT);
+QIS = qS*(-n*Cox*PhiT);
+
+//////////////// Intrinsic Capacitances //////////////////////
+//////// Capacitances coefficients - long channel ////////////
+Cgso = (2.0/3.0) * We*L*Cox * ( (1.0 + 2.0*alpha) * (qS-qidsat) )/( ((1.0+alpha)*(1.0+alpha))*(1.0+(qS-qidsat))); 
+Cgdo = (2.0/3.0)* We*L*Cox * ( ((alpha*alpha)+2.0*alpha)*(qD-qidsat) )/( (1.0+alpha)*(1.0+alpha)*(1+(qD-qidsat) )); 
+Cgbo = ( (n-1.0)/n )*(We*L*Cox - Cgso - Cgdo);
+Cbso = (n-1.0)*Cgso;
+Cbdo = (n-1.0)*Cgdo;
+Cdso = (-4.0/15.0)*n*We*L*Cox *(((1.0 + 3.0*alpha + alpha*alpha)*(qS-qidsat) )/((1.0+alpha)*(1.0+alpha)*(1.0+alpha)*(1+(qS-qidsat))));
+Csdo = (-4.0/15.0)*n*We*L*Cox *(((alpha + 3.0*alpha*alpha +  alpha*alpha*alpha)*(qD-qidsat) )/((1.0+alpha)*(1.0+alpha)*(1.0+alpha)*(1+(qD-qidsat))));
+
+/// Capacitances coefficients with DIBL and velocity saturation effects ////
+alpha_frac = ((1.0-alpha)*(1.0-alpha))/((1.0+alpha)*(1.0+alpha));
+alpha_frac2 = (((3.0*alpha)+7.0)*(1.0-alpha)*(1.0-alpha))/((1.0+alpha)*(1.0+alpha)*(1.0+alpha));
+alpha_frac3 = ((3.0+(7.0*alpha))*(1.0-alpha)*(1.0-alpha))/((1.0+alpha)*(1.0+alpha)*(1.0+alpha));
+Cgs = Cgso*(1.0-(sigma_T/n)) - Cgdo*(sigma_T/n) +((L*gms)/(3.0*n*vsat))*alpha_frac  + Cgdo*W;
+Cgd = Cgdo*(1.0-(sigma_T/n)) - Cgso*(sigma_T/n) -((L*gmd)/(3.0*n*vsat))*alpha_frac  + Cgdo*W;
+Cgb = ((n-1.0)/n)*(We*L*Cox-Cgso-Cgdo-((L*gm)/(3.0*vsat))*alpha_frac)+ ((2.0*sigma_T)/n)*((n-1.0)*We*L*Cox+Cgso+Cgdo);
+Cbs = (n-1.0)*Cgs;
+Cbd = (n-1.0)*Cgd;
+Cds = Cdso*(1.0-(sigma_T/n)) - ((L*gms)/(30.0*vsat))*alpha_frac2;
+Csd = Csdo*(1.0-(sigma_T/n)) + ((L*gmd)/(30.0*vsat))*alpha_frac3;
+Cm = (Csd - Cds)/n;
+
+//////////////// Extrinsic Capacitances //////////////////////
+/////// Overlap Capacitances /////////
+Cgs_ov = Cox*We*LD;
+Cgd_ov = Cox*We*LD;
+
+///// Junction Capacitances /////////
+//DRAIN - BULK
+if (VBD>0.0)
+begin
+	Cjdb  = Cj0*AD*exp(-xd_mj*ln(1.0+VBD/phi_zero));
+	Cjdb_sw = Cj0sw*xj*PD*exp(-xd_mjsw*ln(1.0+VBD/phi_zerosw));   
+end
+else
+begin
+	Cjdb  = Cj0*AD*(1.0 - xd_mj*VBD/phi_zero);
+	Cjdb_sw = Cj0sw*xj*PD*(1.0 - xd_mjsw*VBD/phi_zerosw);
+end
+
+//SOURCE - BULK
+if (VBS>0.0)
+begin
+	Cjsb  = Cj0*AS*exp(-xd_mj*ln(1.0+VBS/phi_zero));
+	Cjsb_sw = Cj0sw*xj*PS*exp(-xd_mjsw*ln(1.0+VBS/phi_zerosw));
+end
+else
+begin
+	Cjsb  = Cj0*AS*(1.0 - xd_mj*VBS/phi_zero);
+	Cjsb_sw = Cj0sw*xj*PS*(1.0 - xd_mjsw*VBS/phi_zerosw);
+end
+
+qovd = Cgd_ov * VDG;
+qovs = Cgs_ov * VSG;
+
+qjd = (Cjdb+Cjdb_sw)*VBD;
+qjs = (Cjsb+Cjsb_sw)*VBS;
+
+////// Transient currents with intrinsic capacitances //////
+I(B,G) <+  ddt(QG);
+I(B,D) <+  ddt(QD)+VBD*gmin;
+I(B,S) <+  ddt(QS)+VBS*gmin;
+
+////// Transient currents with extrinsic capacitances //////
+I(D,G) <+ ddt(qovd);
+I(S,G) <+ ddt(qovs);
+I(B,D) <+ ddt(qjd);
+I(B,S) <+ ddt(qjs);
+
+///////////////////// Noise ///////////////////////////////
+func_thermal = (4 * kboltz * Tin * umob * QI)/(L*L);
+PSD_thermal = white_noise(func_thermal,"thermal");
+
+func_flicker = (q_e*q_e*N_ot*umob/(L*L*n*Cox*ID))*ln((n*Cox*PhiT-QIS)/(n*Cox*PhiT-QID))*ID*ID;
+
+	if (ID < 0) begin
+		func_flicker = -func_flicker;
+	end
+
+PSD_flicker = flicker_noise(func_flicker,1.0,"flicker");
+//I(S,D) <+ PSD_thermal + PSD_flicker;
+
+end
+endmodule
