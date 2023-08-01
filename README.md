@@ -20,7 +20,7 @@ Researchers are kindly requested to include the following citation if the ACM2V0
 
 D. G. Alves Neto, C. M. Adornes, G. Maranhão, et al. "A 5-DC-Parameter MOSFET Model for Circuit Simulation in QucsStudio and Spectre", 2023 21st IEEE Interregional NEWCAS Conference, Edinburgh, Scotland, June 26-28, 2023. 
 
-[NewCAS presentation](/docs/5PM_NewCAS)
+[NewCAS presentation](/docs/5PM_NewCAS.pdf)
 
 > To be published in IEEE Xplore in August
 
