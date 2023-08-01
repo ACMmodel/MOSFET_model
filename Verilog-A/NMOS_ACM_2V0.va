@@ -36,7 +36,7 @@ denominatorED = 2.0*(1.0+WnD)*(1.0+WnD+(2.0/3.0)*ZnD)-2*ZnD; \
 EnD = TermD*(numeratorED/denominatorED); \
 qn = (WnD*(1+EnD)); \
 
-module nmos_ACM_git(D, G, S, B);
+module nmos_ACM(D, G, S, B);
 
 // pinout definition
 inout D,G,S,B;
