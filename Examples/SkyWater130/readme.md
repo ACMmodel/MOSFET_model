@@ -5,10 +5,14 @@ This PDK is a collaborative effort between Google and Skywater technology.
 
 
 ### SVT -  Plots for $I_{D}$ vs. $V_{G}$ @ $V_D$ = 0.1 and 1.8 V and $I_{D}$ vs. $V_{D}$ @ $V_G$ = 0.36, 1.08 and 1.8 V  
+
+W/L = 7 um/ 150 nm
  
 ![I-V curves](SkyWater130nm_nmos_SVT_w7p0u_l0p15u.png)
 
 ### LVT -  Plots for $I_{D}$ vs. $V_{G}$ @ $V_D$ = 0.1 and 1.8 V and $I_{D}$ vs. $V_{D}$ @ $V_G$ = 0.36, 1.08 and 1.8 V  
+
+W/L = 7 um/ 150 nm
  
 ![I-V curves](SkyWater130nm_nmos_LVT_w7p0u_l0p15u.png)
 
