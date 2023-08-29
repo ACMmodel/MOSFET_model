@@ -120,7 +120,7 @@ esi = 11.9*e0; // Silicon permittivity
 Tref = 300.15; // Reference temperature
 q_e = `P_Q; // Elementary charge
 kboltz = `P_K; // Boltzmann constant
-epsi = 0.01; // Constant used for device symmetry 
+epsi = 0.1; // Constant used for device symmetry 
 gmin = $simparam("gmin",0);// gmin is placed in parallel with drain-bulk and source-bulk current sources to increase the numerical convergence
 We = m*W; // Equivalent W of the parallel devices
 
