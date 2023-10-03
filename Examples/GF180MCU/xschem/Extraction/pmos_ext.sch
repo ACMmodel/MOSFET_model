@@ -1,4 +1,4 @@
-v {xschem version=3.4.2 file_version=1.2
+v {xschem version=3.4.4 file_version=1.2
 }
 G {}
 K {}
@@ -56,8 +56,8 @@ node=i(gm_id)
 
 
 
-y1=0.26
-y2=27}
+y1=0.23
+y2=28}
 B 2 240 -260 750 140 {flags=graph
 
 
@@ -90,8 +90,8 @@ color=4
 
 node=i(vd)
 
-y1=-13
-y2=-4.8
+y1=-14
+y2=-4.7
 x2=3.15
 x1=0.05}
 N -120 -80 -40 -80 {
@@ -127,8 +127,8 @@ value="
 .lib $::180MCU_MODELS/sm141064.ngspice typical
 "}
 C {symbols/pfet_03v3.sym} -20 -80 0 0 {name=M7
-L=0.3u
-W=5u
+L=0.5u
+W=10u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -146,7 +146,7 @@ value="
 
 .control
 save all
-dc Vgb 0.05 3.15 10m
+dc Vgb 0.05 3 10m
 
 let gm_id = -deriv(ln(i(Vd)))
 save gm_id

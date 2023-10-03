@@ -1,4 +1,4 @@
-v {xschem version=3.4.2 file_version=1.2
+v {xschem version=3.4.4 file_version=1.2
 }
 G {}
 K {}
@@ -132,7 +132,7 @@ value="
 .lib $::180MCU_MODELS/sm141064.ngspice typical
 "}
 C {symbols/nfet_03v3.sym} -320 20 0 0 {name=M1
-L=10u
+L=0.5u
 W=10u
 nf=1
 m=1
@@ -162,18 +162,18 @@ let gm_id_vt = 0.531*gm_id_max
 save gm_id_vt
 
 meas dc vt0 FIND V(vg) WHEN gm_id=gm_id_vt
-meas dc is0_ FIND i(Vs) WHEN V(vg)=vt0
+meas dc is_ FIND i(Vs) WHEN V(vg)=vt0
 
-let is0 = is0_/0.88
+let is = is_/0.88
 let VT_val=0.026
 let n = 1/(gm_id_max*VT_val)
-save is0 vt0 n
+save is vt0 n
 echo
 echo
 echo
 
 echo Extracted parameters:
-print is0 vt0 n
+print is vt0 n
 
 
 echo

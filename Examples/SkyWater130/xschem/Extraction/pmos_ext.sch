@@ -57,10 +57,10 @@ node=i(gm_id)
 
 
 
-y2=29
-y1=-3.5
+y2=31
+y1=-26
 x1=0.05
-x2=1.8}
+x2=2.49}
 B 2 640 -400 1090 0 {flags=graph
 
 
@@ -106,46 +106,46 @@ color=4
 node=i(vd)
 
 x1=0.05
-x2=1.8
+x2=2.49
 
-y1=-14
-y2=-5.8}
-N 350 -500 430 -500 {
+y1=-15
+y2=-4.6}
+N 350 -410 430 -410 {
 lab=vg}
-N 470 -610 470 -530 {
+N 470 -520 470 -440 {
 lab=#net1}
-N 470 -610 550 -610 {
+N 470 -520 550 -520 {
 lab=#net1}
-N 470 -470 470 -420 {
+N 470 -380 470 -330 {
 lab=#net2}
-N 550 -550 550 -540 {
+N 550 -460 550 -450 {
 lab=GND}
-N 570 -440 570 -420 {
+N 570 -350 570 -330 {
 lab=GND}
-N 470 -360 470 -340 {
+N 470 -270 470 -250 {
 lab=GND}
-N 350 -440 350 -420 {
+N 350 -350 350 -330 {
 lab=GND}
-N 470 -500 570 -500 {
+N 470 -410 570 -410 {
 lab=#net3}
 C {sky130_fd_pr/corner.sym} 510 -770 0 0 {name=CORNER only_toplevel=true corner=tt}
-C {devices/vsource.sym} 350 -470 0 0 {name=Vgb value=0}
-C {devices/vsource.sym} 550 -580 0 0 {name=Vsd value=1.8}
-C {devices/vsource.sym} 570 -470 0 0 {name=V3 value=1.8}
-C {devices/vsource.sym} 470 -390 0 0 {name=Vd value=1.787}
-C {devices/gnd.sym} 350 -420 0 0 {name=l1 lab=GND}
-C {devices/gnd.sym} 470 -340 0 0 {name=l2 lab=GND}
-C {devices/gnd.sym} 570 -420 0 0 {name=l3 lab=GND}
-C {devices/gnd.sym} 550 -540 0 0 {name=l4 lab=GND}
+C {devices/vsource.sym} 350 -380 0 0 {name=Vgb value=0}
+C {devices/vsource.sym} 550 -490 0 0 {name=Vsd value=1.8}
+C {devices/vsource.sym} 570 -380 0 0 {name=V3 value=1.8}
+C {devices/vsource.sym} 470 -300 0 0 {name=Vd value=1.787}
+C {devices/gnd.sym} 350 -330 0 0 {name=l1 lab=GND}
+C {devices/gnd.sym} 470 -250 0 0 {name=l2 lab=GND}
+C {devices/gnd.sym} 570 -330 0 0 {name=l3 lab=GND}
+C {devices/gnd.sym} 550 -450 0 0 {name=l4 lab=GND}
 C {devices/launcher.sym} 685 -835 0 0 {name=h4 
 descr="Ctrl-Left-Click to load/unload waveforms" 
 tclcommand="
 xschem raw_read $netlist_dir/[file tail [file rootname [xschem get current_name]]].raw dc
 "
 }
-C {sky130_fd_pr/pfet_01v8.sym} 450 -500 0 0 {name=M1
+C {sky130_fd_pr/pfet_01v8.sym} 450 -410 0 0 {name=M1
 L=0.5
-W=1
+W=5
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -157,14 +157,14 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {devices/lab_wire.sym} 420 -500 0 0 {name=p1 sig_type=std_logic lab=vg}
+C {devices/lab_wire.sym} 420 -410 0 0 {name=p1 sig_type=std_logic lab=vg}
 C {devices/code.sym} 360 -770 0 0 {name=NGSPICE1
 only_toplevel=true
 value="
 
 .control
 save all
-dc Vgb 0.05 1.75 10m
+dc Vgb 0.05 2.5 20m
 
 let gm_id = -deriv(ln(i(Vd)))
 save gm_id
