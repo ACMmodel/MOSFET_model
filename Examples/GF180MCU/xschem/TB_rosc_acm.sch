@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -172,7 +172,7 @@ C {devices/gnd.sym} 260 150 0 0 {name=l4 lab=GND}
 C {devices/lab_wire.sym} 60 40 0 1 {name=p3 sig_type=std_logic lab=vdd
 
 }
-C {/home/gmaranhao/Desktop/gf180_work/ACM/nmos_acm.sym} 250 40 0 0 {name=N2 
+C {symbol/nmos_acm.sym} 250 40 0 0 {name=N2 
 model=NMOS_ACM 
 w=5u 
 l=0.18u 
@@ -182,7 +182,7 @@ vt0=0.558
 sigma=27m 
 zeta=\{zeta_var\}
 }
-C {/home/gmaranhao/Desktop/gf180_work/ACM/pmos_acm.sym} 250 -50 0 0 {name=N1 
+C {symbol/pmos_acm.sym} 250 -50 0 0 {name=N1 
 model=PMOS_ACM 
 w=5u 
 l=0.18u 
@@ -201,7 +201,7 @@ value=1p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 660 150 0 0 {name=l1 lab=GND}
-C {/home/gmaranhao/Desktop/gf180_work/ACM/nmos_acm.sym} 650 40 0 0 {name=N3 
+C {symbol/nmos_acm.sym} 650 40 0 0 {name=N3 
 model=NMOS_ACM 
 w=5u 
 l=0.18u 
@@ -211,7 +211,7 @@ vt0=0.558
 sigma=27m 
 zeta=\{zeta_var\}
 }
-C {/home/gmaranhao/Desktop/gf180_work/ACM/pmos_acm.sym} 650 -50 0 0 {name=N4 
+C {symbol/pmos_acm.sym} 650 -50 0 0 {name=N4 
 model=PMOS_ACM 
 w=5u 
 l=0.18u 
@@ -230,7 +230,7 @@ value=1p
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 1060 150 0 0 {name=l3 lab=GND}
-C {/home/gmaranhao/Desktop/gf180_work/ACM/nmos_acm.sym} 1050 40 0 0 {name=N5 
+C {symbol/nmos_acm.sym} 1050 40 0 0 {name=N5 
 model=NMOS_ACM 
 w=5u 
 l=0.18u 
@@ -240,7 +240,7 @@ vt0=0.558
 sigma=27m 
 zeta=\{zeta_var\}
 }
-C {/home/gmaranhao/Desktop/gf180_work/ACM/pmos_acm.sym} 1050 -50 0 0 {name=N6 
+C {symbol/pmos_acm.sym} 1050 -50 0 0 {name=N6 
 model=PMOS_ACM 
 w=5u 
 l=0.18u 
@@ -278,8 +278,8 @@ value="
 
 .ic V(vout)=1.65
 .control
-pre_osdi /home/gmaranhao/Desktop/gf180_work/ACM/NMOS_ACM_2V0.osdi
-pre_osdi /home/gmaranhao/Desktop/gf180_work/ACM/PMOS_ACM_2V0.osdi
+pre_osdi /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/NMOS_ACM_2V0.osdi
+pre_osdi /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/PMOS_ACM_2V0.osdi
 save all
 
 tran 0.1p 20n

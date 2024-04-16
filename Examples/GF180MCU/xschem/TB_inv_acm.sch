@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -104,41 +104,41 @@ y1=-0.22
 
 digital=0
 y2=3.6}
-N 110 -170 110 -140 {
+N 70 -260 70 -230 {
 lab=vout}
-N 70 -200 70 -110 {
+N 30 -290 30 -200 {
 lab=vin}
-N 110 -310 150 -310 {
+N 70 -400 110 -400 {
 lab=vdd}
-N 110 -310 110 -230 {
+N 70 -400 70 -320 {
 lab=vdd}
-N -150 -170 70 -170 {
+N -190 -260 30 -260 {
 lab=vin}
-N -150 -110 -150 -90 {
+N -190 -200 -190 -180 {
 lab=GND}
-N 110 -80 110 -50 {
+N 70 -170 70 -140 {
 lab=vss}
-N 110 10 110 30 {
+N 70 -80 70 -60 {
 lab=GND}
-N 110 -110 120 -110 {
+N 70 -200 80 -200 {
 lab=vss}
-N 110 -150 190 -150 {
+N 70 -240 150 -240 {
 lab=vout}
-N 190 -150 200 -150 {
+N 150 -240 160 -240 {
 lab=vout}
-N 150 -310 180 -310 {
+N 110 -400 140 -400 {
 lab=vdd}
-N 110 -200 120 -200 {
+N 70 -290 80 -290 {
 lab=vdd}
-N 120 -250 120 -200 {
+N 80 -340 80 -290 {
 lab=vdd}
-N 110 -250 120 -250 {
+N 70 -340 80 -340 {
 lab=vdd}
-N 120 -110 120 -70 {
+N 80 -200 80 -160 {
 lab=vss}
-N 110 -70 120 -70 {
+N 70 -160 80 -160 {
 lab=vss}
-C {/home/gmaranhao/Desktop/gf180_work/ACM/nmos_acm.sym} 100 -110 0 0 {name=N2 
+C {symbol/nmos_acm.sym} 60 -200 0 0 {name=N2 
 model=NMOS_ACM 
 w=5u 
 l=0.18u 
@@ -148,12 +148,12 @@ vt0=0.558
 sigma=27m 
 zeta=56m
 }
-C {devices/vsource.sym} -150 -140 0 1 {name=VIN 
+C {devices/vsource.sym} -190 -230 0 1 {name=VIN 
 value="pulse(0 3.3 10p 10p 10p 200p 400p)"}
-C {devices/vsource.sym} 180 -280 0 0 {name=VDD value=3.3}
-C {devices/gnd.sym} 180 -250 0 0 {name=l2 lab=GND}
-C {devices/gnd.sym} -150 -90 0 0 {name=l3 lab=GND}
-C {devices/gnd.sym} 110 30 0 0 {name=l4 lab=GND}
+C {devices/vsource.sym} 140 -370 0 0 {name=VDD value=3.3}
+C {devices/gnd.sym} 140 -340 0 0 {name=l2 lab=GND}
+C {devices/gnd.sym} -190 -180 0 0 {name=l3 lab=GND}
+C {devices/gnd.sym} 70 -60 0 0 {name=l4 lab=GND}
 C {devices/code_shown.sym} -450 -630 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
@@ -162,26 +162,7 @@ value="
 .model NMOS_ACM nmos_ACM
 .model PMOS_ACM pmos_ACM
 "}
-C {devices/code_shown.sym} -440 -500 0 0 {name=NGSPICE only_toplevel=true
-
-value="
-.option gmin=1e-18
-.control
-pre_osdi /home/gmaranhao/Desktop/gf180_work/ACM/NMOS_ACM_2V0.osdi
-pre_osdi /home/gmaranhao/Desktop/gf180_work/ACM/PMOS_ACM_2V0.osdi
-save all
-
-tran 1p 1n
-write TB_inv_acm.raw
-set appendwrite
-
-dc VIN 0 3.3 1m
-remzerovec
-write TB_inv_acm.raw
-
-.endc
-"}
-C {/home/gmaranhao/Desktop/gf180_work/ACM/pmos_acm.sym} 100 -200 0 0 {name=N1 
+C {symbol/pmos_acm.sym} 60 -290 0 0 {name=N1 
 model=PMOS_ACM 
 w=5u 
 l=0.18u 
@@ -191,17 +172,17 @@ vt0=0.525
 sigma=24m 
 zeta=35m
 }
-C {devices/lab_wire.sym} -80 -170 0 0 {name=p1 sig_type=std_logic lab=vin
+C {devices/lab_wire.sym} -120 -260 0 0 {name=p1 sig_type=std_logic lab=vin
 }
-C {devices/lab_wire.sym} 140 -310 0 0 {name=p3 sig_type=std_logic lab=vdd
+C {devices/lab_wire.sym} 100 -400 0 0 {name=p3 sig_type=std_logic lab=vdd
 
 }
-C {devices/lab_wire.sym} 110 -50 0 0 {name=p4 sig_type=std_logic lab=vss
+C {devices/lab_wire.sym} 70 -140 0 0 {name=p4 sig_type=std_logic lab=vss
 
 }
-C {devices/lab_wire.sym} 170 -150 0 0 {name=p5 sig_type=std_logic lab=vout
+C {devices/lab_wire.sym} 130 -240 0 0 {name=p5 sig_type=std_logic lab=vout
 }
-C {devices/ammeter.sym} 110 -20 0 0 {name=Vs_i}
+C {devices/ammeter.sym} 70 -110 0 0 {name=Vs_i}
 C {devices/launcher.sym} 305 -435 0 0 {name=h4 
 descr="Ctrl-Left-Click to load/unload DC Files" 
 tclcommand="
@@ -214,3 +195,22 @@ tclcommand="
 xschem raw_read $netlist_dir/[file tail [file rootname [xschem get current_name]]].raw tran
 "
 }
+C {devices/code.sym} -460 -480 0 0 {name=NGSPICE1 only_toplevel=true
+
+value="
+.option gmin=1e-18
+.control
+pre_osdi /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/NMOS_ACM_2V0.osdi
+pre_osdi /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/PMOS_ACM_2V0.osdi
+save all
+
+tran 1p 1n
+write TB_inv_acm.raw
+set appendwrite
+
+dc VIN 0 3.3 1m
+remzerovec
+write TB_inv_acm.raw
+
+.endc
+"}

@@ -1,11 +1,11 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
 V {}
 S {}
 E {}
-B 2 240 -650 750 -260 {flags=graph
+B 2 515 -795 1025 -405 {flags=graph
 
 
 ypos1=0
@@ -58,7 +58,7 @@ node=i(gm_id)
 
 y1=0.23
 y2=28}
-B 2 240 -260 750 140 {flags=graph
+B 2 515 -405 1025 -5 {flags=graph
 
 
 ypos1=0
@@ -94,39 +94,36 @@ y1=-14
 y2=-4.7
 x2=3.15
 x1=0.05}
-N -120 -80 -40 -80 {
+T {tcleval(VT0: [xschem raw value vt0 0])} 270 -595 0 0 0.4 0.4 {floater=1 layer=7}
+T {tcleval(IS0: [xschem raw value is0 0])} 275 -570 0 0 0.4 0.4 {floater=1 layer=7}
+T {tcleval(n: [xschem raw value n 0])} 275 -545 0 0 0.4 0.4 {floater=1 layer=7}
+N 155 -225 235 -225 {
 lab=vg}
-N 0 -190 0 -110 {
+N 275 -335 275 -255 {
 lab=#net1}
-N 0 -190 80 -190 {
+N 275 -335 355 -335 {
 lab=#net1}
-N 0 -50 0 0 {
+N 275 -195 275 -145 {
 lab=#net2}
-N 80 -130 80 -120 {
+N 355 -275 355 -265 {
 lab=GND}
-N 100 -20 100 0 {
+N 375 -165 375 -145 {
 lab=GND}
-N 0 60 0 80 {
+N 275 -85 275 -65 {
 lab=GND}
-N -120 -20 -120 0 {
+N 155 -165 155 -145 {
 lab=GND}
-N 0 -80 100 -80 {
+N 275 -225 375 -225 {
 lab=#net3}
-C {devices/vsource.sym} -120 -50 0 0 {name=Vgb value=0}
-C {devices/vsource.sym} 80 -160 0 0 {name=Vsd value=3.3}
-C {devices/vsource.sym} 100 -50 0 0 {name=V3 value=3.3}
-C {devices/vsource.sym} 0 30 0 0 {name=Vd value=3.287}
-C {devices/gnd.sym} -120 0 0 0 {name=l1 lab=GND}
-C {devices/gnd.sym} 0 80 0 0 {name=l2 lab=GND}
-C {devices/gnd.sym} 100 0 0 0 {name=l3 lab=GND}
-C {devices/gnd.sym} 80 -120 0 0 {name=l4 lab=GND}
-C {devices/code_shown.sym} -240 -590 0 0 {name=MODELS only_toplevel=true
-format="tcleval( @value )"
-value="
-.include $::180MCU_MODELS/design.ngspice
-.lib $::180MCU_MODELS/sm141064.ngspice typical
-"}
-C {symbols/pfet_03v3.sym} -20 -80 0 0 {name=M7
+C {devices/vsource.sym} 155 -195 0 0 {name=Vgb value=0}
+C {devices/vsource.sym} 355 -305 0 0 {name=Vsd value=3.3}
+C {devices/vsource.sym} 375 -195 0 0 {name=V3 value=3.3}
+C {devices/vsource.sym} 275 -115 0 0 {name=Vd value=3.287}
+C {devices/gnd.sym} 155 -145 0 0 {name=l1 lab=GND}
+C {devices/gnd.sym} 275 -65 0 0 {name=l2 lab=GND}
+C {devices/gnd.sym} 375 -145 0 0 {name=l3 lab=GND}
+C {devices/gnd.sym} 355 -265 0 0 {name=l4 lab=GND}
+C {symbols/pfet_03v3.sym} 255 -225 0 0 {name=M7
 L=0.5u
 W=10u
 nf=1
@@ -140,7 +137,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {devices/code.sym} -250 -480 0 0 {name=NGSPICE1
+C {devices/code.sym} 0 -655 0 0 {name=NGSPICE1
 only_toplevel=true
 value="
 
@@ -181,10 +178,22 @@ write pmos_ext.raw
 .endc
 
 " }
-C {devices/lab_wire.sym} -70 -80 0 0 {name=p1 sig_type=std_logic lab=vg}
-C {devices/launcher.sym} -175 -265 0 0 {name=h1 
+C {devices/lab_wire.sym} 205 -225 0 0 {name=p1 sig_type=std_logic lab=vg}
+C {devices/launcher.sym} 100 -410 0 0 {name=h1 
 descr="Ctrl-Left-Click to load/unload" 
 tclcommand="
 xschem raw_read $netlist_dir/[file tail [file rootname [xschem get current_name]]].raw dc
 "
 }
+C {devices/launcher.sym} 260 -635 0 0 {name=h4 
+descr="Ctrl-Left-Click to Show" 
+tclcommand="
+xschem raw_read $netlist_dir/[file tail [file rootname [xschem get current_name]]].raw dc
+"
+}
+C {devices/code_shown.sym} 5 -775 0 0 {name=MODELS1 only_toplevel=true
+format="tcleval( @value )"
+value="
+.include $::180MCU_MODELS/design.ngspice
+.lib $::180MCU_MODELS/sm141064.ngspice typical
+"}

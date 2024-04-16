@@ -1,4 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
+v {xschem version=3.4.5 file_version=1.2
 }
 G {}
 K {}
@@ -189,8 +189,8 @@ C {devices/code.sym} -400 -110 0 0 {name=NGSPICE only_toplevel=true
 value="
 *.option gmin=1e-18
 .control
-pre_osdi /home/gmaranhao/Desktop/gf180_work/ACM/NMOS_ACM_2V0.osdi
-pre_osdi /home/gmaranhao/Desktop/gf180_work/ACM/PMOS_ACM_2V0.osdi
+pre_osdi /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/NMOS_ACM_2V0.osdi
+pre_osdi /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/PMOS_ACM_2V0.osdi
 save all
 
 op
@@ -221,7 +221,7 @@ C {devices/launcher.sym} 80 250 0 0 {name=h2
 descr="Annotate OP" 
 tclcommand="set show_hidden_texts 1; xschem annotate_op"
 }
-C {/home/gmaranhao/Desktop/gf180_work/ACM/nmos_acm.sym} 260 10 0 0 {name=N2 
+C {symbol/nmos_acm.sym} 260 10 0 0 {name=N2 
 model=NMOS_ACM 
 w=10u 
 l=0.5u 
@@ -231,7 +231,7 @@ vt0=0.692
 sigma=6.1m 
 zeta=0.1m
 }
-C {/home/gmaranhao/Desktop/gf180_work/ACM/pmos_acm.sym} 260 -80 0 0 {name=N1 
+C {symbol/pmos_acm.sym} 260 -80 0 0 {name=N1 
 model=PMOS_ACM 
 w=10u 
 l=0.5u 
