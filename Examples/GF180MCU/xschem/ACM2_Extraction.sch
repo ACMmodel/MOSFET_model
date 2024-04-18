@@ -11,7 +11,6 @@ L 7 720 -990 720 -620 {}
 L 7 1060 -990 1060 -620 {}
 T {NMOS} 120 -980 0 0 0.8 0.8 {}
 T {PMOS} 460 -980 0 0 0.8 0.8 {}
-T {TestBenchs} 770 -980 0 0 0.8 0.8 {}
 T {GlobalFoundries 180 nm 
 Open-Source PDK} 520 -1140 0 0 0.65 0.65 {}
 T {ACM2 MOSFET Model} 20 -1220 0 0 0.8 0.8 {}
@@ -25,6 +24,8 @@ T {sigma} 400 -770 0 0 0.4 0.4 {}
 T {zeta} 400 -700 0 0 0.4 0.4 {}
 T {ACM2 vs. BSIM4 - nfet GF180 nm} 760 -840 0 0 0.3 0.3 {}
 T {ACM2 vs. BSIM4 - pfet GF180 nm} 760 -770 0 0 0.3 0.3 {}
+T {ID - VG 
+Characteristics} 740 -990 0 0 0.8 0.8 {}
 C {devices/launcher.sym} 90 -1100 0 0 {name=h1
 descr="ACM2 Model Report"
 url="https://github.com/ACMmodel/MOSFET_model/blob/main/docs/ACM_Report_Github.pdf"}
