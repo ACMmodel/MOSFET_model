@@ -1,0 +1,41 @@
+v {xschem version=3.4.1 file_version=1.2
+}
+G {}
+K {type=nmos
+format="@spiceprefix@name @pinlist @model 
++w=@w l=@l 
++n=@n is=@is vt0=@vt0 sigma=@sigma zeta=@zeta"
+template="name=N1 
+model=NMOS_ACM 
+w=1u 
+l=1u 
+n=1 
+is=5u 
+vt0=0.5
+sigma=20m 
+zeta=5m
+"}
+V {}
+S {}
+E {}
+L 4 -2.5 -22.5 -2.5 22.5 {}
+L 4 -30 0 -7.5 0 {}
+L 4 10 -30 10 -17.5 {}
+L 4 10 17.5 10 30 {}
+L 4 -7.5 -15 -7.5 15 {}
+L 4 -2.5 -17.5 10 -17.5 {}
+L 4 -2.5 17.5 5 17.5 {}
+L 4 -2.5 0 10 0 {}
+B 5 7.5 -32.5 12.5 -27.5 {name=D dir=inout}
+B 5 -32.5 -2.5 -27.5 2.5 {name=G dir=inout}
+B 5 7.5 27.5 12.5 32.5 {name=S dir=inout}
+B 5 7.5 -2.5 12.5 2.5 {name=B dir=inout}
+P 4 4 5 15 10 17.5 5 20 5 15 {fill=true}
+T {D} 15 -26.5 0 1 0.11 0.11 {}
+T {B} 7.5 -9 0 1 0.11 0.11 {}
+T {G} -22.5 -9 0 1 0.11 0.11 {}
+T {S} 15 21 0 1 0.11 0.11 {}
+T {@name} -5 -30 0 1 0.2 0.2 {}
+T {@model} 20 -8.75 2 1 0.2 0.2 {}
+T {@w / @l} 21.25 13.75 0 0 0.2 0.2 { layer=13}
+T {vt0=@vt0} 21.25 1.25 0 0 0.2 0.2 { layer=13}

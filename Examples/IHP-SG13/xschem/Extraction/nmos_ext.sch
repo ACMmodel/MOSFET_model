@@ -46,17 +46,17 @@ logy=0
 
 
 
-linewidth_mult=4.0
+linewidth_mult=6.0
 subdivx=3
 
 color=5
-x1=0.05
-x2=3.3
-node=i(gm_id)
+x1=0.02
+x2=1.5
+node="\\"gm/ID; i(gm_id)\\""
 
 
 
-y1=0.12
+y1=0.57
 y2=28}
 B 2 530 -400 1040 0 {flags=graph
 
@@ -88,12 +88,12 @@ color=4
 
 
 
-node=i(vs)
+node="\\"ID;i(vs)\\""
 
-y1=-13
-y2=-4.4
-x2=3.3
-x1=0.05}
+y1=-11
+y2=-3.5
+x2=1.5
+x1=0.02}
 T {tcleval(VT0: [xschem raw value vt0 0])} 255 -615 0 0 0.4 0.4 {floater=1 layer=7}
 T {tcleval(IS0: [xschem raw value is 0])} 260 -590 0 0 0.4 0.4 {floater=1 layer=7}
 T {tcleval(n: [xschem raw value n 0])} 260 -565 0 0 0.4 0.4 {floater=1 layer=7}
@@ -128,34 +128,17 @@ tclcommand="
 xschem raw_read $netlist_dir/[file tail [file rootname [xschem get current_name]]].raw dc
 "
 }
-C {devices/code_shown.sym} 10 -820 0 0 {name=MODELS only_toplevel=true
-format="tcleval( @value )"
-value="
-.include $::180MCU_MODELS/design.ngspice
-.lib $::180MCU_MODELS/sm141064.ngspice typical
-"}
-C {symbols/nfet_03v3.sym} 150 -360 0 0 {name=M1
-L=0.3u
-W=10u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
 C {devices/vsource.sym} 50 -330 0 0 {name=Vgb value=0}
 C {devices/code.sym} 0 -710 0 0 {name=NGSPICE
 only_toplevel=true
 value="
 
 .control
+pre_osdi ./psp103_nqs.osdi
 save all
-dc Vgb 0.05 3.3 1m
+save @n.xm1.nsg13_lv_nmos[vto]
+
+dc Vgb 0.02 1.5 1m
 
 let gm_id = deriv(ln(i(Vs)))
 save gm_id
@@ -190,3 +173,17 @@ write nmos_ext.raw
 
 " }
 C {devices/lab_wire.sym} 100 -360 0 0 {name=p1 sig_type=std_logic lab=vg}
+C {sg13g2_pr/sg13_lv_nmos.sym} 150 -360 0 0 {name=M1
+L=0.12u
+W=10u
+ng=1
+m=1
+model=sg13_lv_nmos
+spiceprefix=X
+}
+C {devices/code_shown.sym} -10 -870 0 0 {name=MODELS only_toplevel=true
+format="tcleval( @value )"
+value="
+.lib $::SG13G2_MODELS/cornerMOSlv.lib mos_tt
+.lib $::SG13G2_MODELS/cornerMOShv.lib mos_tt
+"}

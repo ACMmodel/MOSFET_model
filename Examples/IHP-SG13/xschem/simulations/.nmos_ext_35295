@@ -1,0 +1,14 @@
+** sch_path: /home/gmaranhao/Documents/MOSFET_model/Examples/IHP-SG13/xschem/Extraction/nmos_ext.sch
+**.subckt nmos_ext
+Vds ?1 net1 ?1 GND  13m
+**** end_element
+V3 ?1 net3 ?1 GND  0
+**** end_element
+Vs ?1 net2 ?1 GND  0
+**** end_element
+Vgb ?1 vg ?1 GND  0
+**** end_element
+**** spice_prefix X
+M1 ?1 net2 ?1 vg ?1 net1 ?1 net3  sg13_lv_nmos W=2.0u L=2.0u ng=1 m=1
+**** end_element
+**** begin user architecture code

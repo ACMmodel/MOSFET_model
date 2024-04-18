@@ -36,6 +36,9 @@ denominatorED = 2.0*(1.0+WnD)*(1.0+WnD+(2.0/3.0)*ZnD)-2*ZnD; \
 EnD = TermD*(numeratorED/denominatorED); \
 qn = (WnD*(1+EnD)); \
 
+//  OPP      operating point parameter
+`define OPP(nam,uni,des)               (*units=uni,                             desc=des*)           real    nam;
+
 module nmos_ACM(D, G, S, B);
 
 // pinout definition
@@ -111,6 +114,26 @@ real VT0_T, IS_T, sigma_T, zeta_T, Tin, Tref;
 real func_thermal, func_flicker, ND_thermal, ND_flicker;
 real gmin;
 
+//Variables for operating point info
+`OPP(qS_op,"C"            ,"Normalized source charge density")
+`OPP(qD_op,"C"            ,"Normalized drain charge density")
+`OPP(Cgs_op,"F"            ,"Gate-source capacitance")
+`OPP(Cgd_op,"F"            ,"Gate-drain capacitance")
+`OPP(Cgb_op,"F"            ,"Gate-bulk capacitance")
+`OPP(Cds_op,"F"            ,"Drain-source capacitance")
+`OPP(Csd_op,"F"            ,"Source-drain capacitance")
+`OPP(Cbs_op,"F"            ,"Bulk-source capacitance")
+`OPP(Cbd_op,"F"            ,"Bulk-drain capacitance")
+`OPP(Cgd_ov_op,"F"            ,"Gate-drain overlap capacitance")
+`OPP(Cgs_ov_op,"F"            ,"Gate-source overlap capacitance")
+`OPP(Cjdb_op,"F"            ,"Drain-bulk junction capacitance")
+`OPP(Cjsb_op,"F"            ,"Source-bulk junction capacitance")
+`OPP(gm_op,"A/V"            ,"Gate transconductance")
+`OPP(gms_op,"A/V"            ,"Source transconductance")
+`OPP(gmd_op,"A/V"            ,"Drain transconductance")
+`OPP(umob_op,"(m^2)/V*s"            ,"Carrier mobility")
+//
+
 analog begin
 
 //Constants
@@ -124,7 +147,7 @@ epsi = 0.1; // Constant used for device symmetry
 gmin = $simparam("gmin",0); // gmin is placed in parallel with drain-bulk and source-bulk current sources to increase the numerical convergence
 We = m*W; // Equivalent W of the parallel devices
 
-//Temperature variation
+ //Temperature variation
 PhiT = $vt($temperature); // Thermal voltage
 Tin = $temperature; //Simulator temperature
 VT0_T = VT0 + alphaVT0*(Tin-Tref) + aVT0/sqrt(We*L); // Temperature variation and mismatch on VT0
@@ -262,6 +285,27 @@ qovs = Cgs_ov * VGS;
 
 qjd = (Cjdb+Cjdb_sw)*VDB;
 qjs = (Cjsb+Cjsb_sw)*VSB;
+
+        //Operating point values
+	begin : OPval
+		qS_op = qS;
+		qD_op = qD;
+		Cgs_op = Cgs;
+		Cgd_op = Cgd;
+		Cgb_op = Cgb;
+		Cds_op = Cds;
+		Csd_op = Csd;
+		Cbs_op = Cbs;
+		Cbd_op = Cbd;
+		Cgd_ov_op = Cgd_ov;
+		Cgs_ov_op = Cgs_ov;
+		Cjdb_op = Cjdb;
+		Cjsb_op = Cjsb;
+		gm_op = gm;
+		gms_op = gms;
+		gmd_op = gmd;
+		umob_op = umob;
+	end // OPval
 
 ///////////// Transient currents with charges ////////////////
 I(G,B) <+  ddt(QG);

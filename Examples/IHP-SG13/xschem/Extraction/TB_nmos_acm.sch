@@ -153,7 +153,7 @@ N -260 -430 -260 -420 {
 lab=vs}
 N -260 -360 -260 -340 {
 lab=GND}
-N -260 -460 -170 -460 {
+N -190 -460 -170 -460 {
 lab=vb}
 N -290 -420 -260 -420 {
 lab=vs}
@@ -171,7 +171,7 @@ N -570 -440 -570 -430 {
 lab=vs2}
 N -570 -370 -570 -350 {
 lab=GND}
-N -570 -470 -480 -470 {
+N -500 -470 -480 -470 {
 lab=vb2}
 N -600 -430 -570 -430 {
 lab=vs2}
@@ -183,11 +183,15 @@ N -660 -470 -610 -470 {
 lab=vg}
 N -360 -460 -300 -460 {
 lab=vg}
-C {devices/code_shown.sym} -750 -830 0 0 {name=MODELS only_toplevel=true
+N -260 -460 -190 -460 {
+lab=vb}
+N -570 -470 -500 -470 {
+lab=vb2}
+C {devices/code_shown.sym} -720 -870 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
-.include $::180MCU_MODELS/design.ngspice
-.lib $::180MCU_MODELS/sm141064.ngspice typical
+.lib $::SG13G2_MODELS/cornerMOSlv.lib mos_tt
+.lib $::SG13G2_MODELS/cornerMOShv.lib mos_tt
 .model NMOS_ACM nmos_ACM
 "}
 C {devices/vsource.sym} -360 -430 0 0 {name=VG value=0}
@@ -203,16 +207,6 @@ C {devices/lab_wire.sym} -220 -580 0 0 {name=p2 sig_type=std_logic lab=vd}
 C {devices/lab_wire.sym} -290 -420 0 0 {name=p3 sig_type=std_logic lab=vs
 }
 C {devices/lab_wire.sym} -190 -480 0 0 {name=p4 sig_type=std_logic lab=vb
-}
-C {symbol/nmos_acm.sym} -270 -460 0 0 {name=N1 
-model=NMOS_ACM 
-w=5u 
-l=0.30u 
-n=1.383 
-is=1.076u 
-vt0=0.6493
-sigma=26m 
-zeta=22m
 }
 C {devices/vsource.sym} -470 -560 0 0 {name=VD2 value=3.3}
 C {devices/vsource.sym} -480 -400 0 0 {name=VB2 value=0}
@@ -233,20 +227,6 @@ tclcommand="
 xschem raw_read $netlist_dir/[file tail [file rootname [xschem get current_name]]].raw dc
 "
 }
-C {symbols/nfet_03v3.sym} -590 -470 0 0 {name=M1
-L=0.3u
-W=5u
-nf=1
-m=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=nfet_03v3
-spiceprefix=X
-}
 C {devices/code.sym} -740 -730 0 0 {name=NGSPICE only_toplevel=true
 value="
 .control
@@ -266,3 +246,21 @@ write TB_nmos_acm.raw
 
 .endc
 "}
+C {sg13g2_pr/sg13_lv_nmos.sym} -590 -470 0 0 {name=M1
+L=2.0u
+W=2.0u
+ng=1
+m=1
+model=sg13_lv_nmos
+spiceprefix=X
+}
+C {/home/gmaranhao/Documents/MOSFET_model/Examples/IHP-SG13/xschem/symbol/nmos_acm.sym} -270 -460 0 0 {name=N1 
+model=NMOS_ACM 
+w=10u 
+l=0.12u 
+n=1.41
+is=11.7u 
+vt0=0.490
+sigma=52.8m 
+zeta=1p
+}
