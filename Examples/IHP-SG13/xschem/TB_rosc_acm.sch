@@ -278,8 +278,8 @@ value="
 
 .ic V(vout)=1.65
 .control
-pre_osdi /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/NMOS_ACM_2V0.osdi
-pre_osdi /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/PMOS_ACM_2V0.osdi
+pre_osdi ./NMOS_ACM_2V0.osdi
+pre_osdi ./PMOS_ACM_2V0.osdi
 save all
 
 tran 0.1p 20n

@@ -1,0 +1,50 @@
+** sch_path: /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/TB_nand2_acm.sch
+**.subckt TB_nand2_acm
+x1 A B Y VDD VSS nand2_acm
+VA A VSS pulse(0 3.3 50n 200p 200p 50n 100n)
+VDD VDD GND 3.3
+VSS VSS GND 0
+VA1 B VSS pulse(0 3.3 125n 200p 200p 50n 100n)
+**** begin user architecture code
+
+.include /home/gmaranhao/pdk/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /home/gmaranhao/pdk/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.model NMOS_ACM nmos_ACM
+.model PMOS_ACM pmos_ACM
+
+
+
+.option gmin=1e-15
+
+.control
+pre_osdi ./NMOS_ACM_2V0.osdi
+pre_osdi ./PMOS_ACM_2V0.osdi
+save all
+
+
+tran 1n 500n
+remzerovec
+write TB_nand2_acm.raw
+set appendwrite
+
+.endc
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  symbol/nand2_acm.sym # of pins=3
+** sym_path: /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/nand2_acm.sym
+** sch_path: /home/gmaranhao/Documents/MOSFET_model/Examples/GF180MCU/xschem/symbol/nand2_acm.sch
+.subckt nand2_acm A B Y VDDPIN VSSPIN
+*.ipin A
+*.opin Y
+*.ipin B
+N1 Y A net1 VSSPIN NMOS_ACM w=2u l=2u n=1.38 is=67.3n vt0=0.652 sigma=20m zeta=5m
+N2 Y A VDDPIN VDDPIN PMOS_ACM w=2u l=2u n=1.438 is=17.94n vt0=0.7774 sigma=20m zeta=5m
+N3 Y B VDDPIN VDDPIN PMOS_ACM w=2u l=2u n=1.438 is=17.94n vt0=0.7774 sigma=20m zeta=5m
+N4 net1 B VSSPIN VSSPIN NMOS_ACM w=2u l=2u n=1.38 is=67.3n vt0=0.652 sigma=20m zeta=5m
+.ends
+
+.GLOBAL GND
+.end
