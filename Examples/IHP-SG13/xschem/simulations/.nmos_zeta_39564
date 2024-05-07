@@ -1,0 +1,18 @@
+** sch_path: /home/gmaranhao/Documents/MOSFET_model/Examples/IHP-SG13/xschem/nmos_zeta.sch
+**.subckt nmos_zeta
+VD ?1 vd ?1 GND  1.5
+**** end_element
+VB ?1 vb ?1 GND  0
+**** end_element
+VS ?1 vs ?1 GND  0
+**** end_element
+N1 ?1 vd ?1 vd ?1 vs ?1 vb  NMOS_ACM 
++w=5u l=0.30u 
++n=1.383 is=1.076u vt0=0.6493 sigma=26m zeta=22m
+**** end_element
+**** begin user architecture code
+ 
+.lib /home/gmaranhao/pdk/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
+.lib /home/gmaranhao/pdk/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerMOShv.lib mos_tt
+.model NMOS_ACM nmos_ACM
+ 
