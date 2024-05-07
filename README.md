@@ -1,5 +1,5 @@
-# Advanced Compact MOSFET model (ACM)
- ACM is a simple MOSFET model to design and simulate Analog, Mixed-Signal, and RF circuits
+# Advanced Compact MOSFET model 2 (ACM2)
+ ACM2 is a simple MOSFET model to design and simulate Analog, Mixed-Signal, and RF circuits
 
 As of July 2023, this repository targets to release all future versions and technical support about the ACM model.
 
