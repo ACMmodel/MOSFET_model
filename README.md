@@ -1,8 +1,9 @@
 # Advanced Compact MOSFET model 2 (ACM2)
  ACM2 is a simple MOSFET model to design and simulate Analog, Mixed-Signal, and RF circuits
+ 
+[LASCAS TUTORIAL 2A Presentation HERE!!!](/docs/ACM2_LASCAS_2025_Tutorial2A_Galup_Alves_Schneider_Bourdel.pdf)
 
 As of July 2023, this repository aims to release all future versions and provide technical support for the ACM2 model.
-
 
 # Current Status
 >
