@@ -26,7 +26,7 @@ More about the ACM2:
 [Integrated Circuit laboratory](https://lci.ufsc.br/) @ Universidade Federal de Santa Catarina
 
 
->>>>>>>>>>>>>>>>>>>>>>NEWCAS 2025 - Tutorial<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+-------------------NEWCAS 2025 - Tutorial----------------------
 [PART1](/docs/Part_1_ACM2_NEWCAS_2025_Galup-Montoro.pdf)
 [PART2](/docs/Part_2_ACM2_NEWCAS_2025_Barragan.pdf)
 [PART3](/docs/Part_3_ACM2_NEWCAS_2025_Alves.pdf)
