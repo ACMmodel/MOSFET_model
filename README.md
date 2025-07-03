@@ -27,7 +27,7 @@ More about the ACM2:
 
 
 -------------------FSIC Presentation----------------------
-[SLIDES](/docs/FSiC_2025_DGAN_vsub.pdf)
+[SLIDES](/docs/FSiC_2025_DGAN_ACM2.pdf)
 ----------------------------------------------------------
 
 
