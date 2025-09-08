@@ -26,9 +26,9 @@ More about the ACM2:
 [Integrated Circuit laboratory](https://lci.ufsc.br/) @ Universidade Federal de Santa Catarina
 
 
--------------------FSIC Presentation----------------------
-[SLIDES](/docs/FSiC_2025_DGAN_ACM2.pdf)
-----------------------------------------------------------
+-------------------ESSERC2025 TUTORIAL T2 Presentation----------------------
+[SLIDES](/docs/T2-Design_and_Simulation_of_Analog-RF_IC_Final_08_09_25.pptx)
+----------------------------------------------------------------------------
 
 
 ## Contact
