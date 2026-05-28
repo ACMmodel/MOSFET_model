@@ -11,8 +11,10 @@ As of July 2023, this repository aims to release all future versions and provide
 # About ACM2
 ACM2 is a charge-based physical model. All the large signal characteristics (currents and charges) and the small signal parameters ((trans)conductances and (trans)capacitances) are given by single-piece expressions in all regions of operation. It also preserves the transistor's structural source-drain symmetry.
 
-The model is available for commercial and open-source EDA tools due to the versatility of the Verilog-A language.
+The model is available for proprietary and open-source EDA tools due to the versatility of the Verilog-A language.
 This repository presents the Verilog-A code for NMOS and PMOS transistors, documentation of the model in papers and reports, and a comparison of the model with PDK models or measurements for the three available open-source processes (Sky130, IHPSG13, and GF180MCU).
+
+ACM2 can also be used for design-oriented circuit exploration, as illustrated by the resistive-feedback LNA design methodology available in this [Google Colab notebook](/Examples/Design%20Methodologies/RfeedbackLNA_design/LNA_design_with_ACM2_git2026.ipynb).
 
 Further details on the ACM2 model formulation and implementation are available in the report below:
 
