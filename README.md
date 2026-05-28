@@ -37,7 +37,7 @@ This section contains slides from tutorials and presentations related to the ACM
 
 |  |  |
 | :---: | :--- |
-| <p align="center"><img src="images/UFSC_logo_white2.png" alt="UFSC Logo" height="80"></p> | ¹ Federal University of Santa Catarina, 88040-900 Florianópolis, Brazil. |
+| <p align="center"><img src="images/UFSC_logo_white3.png" alt="UFSC Logo" height="80"></p> | ¹ Federal University of Santa Catarina, 88040-900 Florianópolis, Brazil. |
 | <p align="center"><img src="images/TIMA_logo_white.png" alt="TIMA Logo" height="40"></p> | ² Univ. Grenoble Alpes, Grenoble INP, CNRS, TIMA, 38000 Grenoble, France. |
 
 ---
