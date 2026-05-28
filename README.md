@@ -22,7 +22,11 @@ Further details on the ACM2 model formulation and implementation are available i
 
 Researchers are kindly requested to include the following citation when using the ACM2 model in their research.
 
+Main paper:
 D. G. A. Neto et al., "[Design-oriented single-piece 5-DC-parameter MOSFET model](https://ieeexplore.ieee.org/document/10565864)", in IEEE Access, doi: 10.1109/ACCESS.2024.3417316.
+
+Github:
+
 
 ## [Presentations](/docs/presentations/)
 
