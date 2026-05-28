@@ -26,10 +26,11 @@ Researchers are kindly requested to include the following citation when using th
 
 Main paper:
 
-D. G. A. Neto et al., "[Design-Oriented Single-Piece 5-DC-Parameter MOSFET Model](https://ieeexplore.ieee.org/document/10565864)," *IEEE Access*, vol. 12, pp. 87420–87437, 2024, doi: 10.1109/ACCESS.2024.3417316.
+>D. G. A. Neto et al., "[Design-Oriented Single-Piece 5-DC-Parameter MOSFET Model](https://ieeexplore.ieee.org/document/10565864)," *IEEE Access*, vol. 12, pp. 87420–87437, 2024, doi: 10.1109/ACCESS.2024.3417316.
 
 Github:
 
+> D. G. A. Neto, M. C. Schneider, M. J. Barragan, S. Bourdel, and C. Galup-Montoro, “Advanced Compact MOSFET Model 2 (ACM2),” 2026. [Online]. Available: https://doi.org/10.5281/zenodo.20434089
 
 ## [Presentations](/docs/presentations/)
 
