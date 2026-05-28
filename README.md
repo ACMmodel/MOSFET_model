@@ -26,6 +26,10 @@ D. G. A. Neto et al., "[Design-oriented single-piece 5-DC-parameter MOSFET model
 
 This section contains slides from tutorials and presentations related to the ACM2 model.
 
+- [NEWCAS 2025 Tutorial](/docs/presentations/ACM2_NEWCAS_2025.pdf)
+- [FSIC 2025 presentation](/docs/presentations/FSiC_2025_DGAN_ACM2.pdf)
+- [ESSERC 2025 Tutorial](/docs/presentations/T2-Design_and_Simulation_of_Analog-RF_IC_ESSERC.pdf)
+
 ## Authors
 [**Deni Germano Alves Neto**](https://www.linkedin.com/in/deni-alves-neto)¹⁺²  
 **Márcio Cherem Schneider**¹  
