@@ -26,6 +26,12 @@ D. G. A. Neto et al., "[Design-oriented single-piece 5-DC-parameter MOSFET model
 More about the ACM2:
 [Integrated Circuit laboratory](https://lci.ufsc.br/) @ Universidade Federal de Santa Catarina
 
+
+-------------------ESSERC2025 TUTORIAL T2 Presentation----------------------
+[SLIDES](/docs/T2-Design_and_Simulation_of_Analog-RF_IC_Final_08_09_25.pptx)
+----------------------------------------------------------------------------
+
+
 ## Contact
 
 Requests for more information about ACM2 model or related information can be emailed to acmmodelgit@gmail.com
