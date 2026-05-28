@@ -9,25 +9,42 @@ As of July 2023, this repository aims to release all future versions and provide
 >
 
 # About ACM2
-The ACM2 is a charge-based physical model. All the large signal characteristics (currents and charges) and the small signal parameters ((trans)conductances and (trans)capacitances) are given by single-piece expressions in all regions of operation. It also preserves the structural source-drain symmetry of the transistor.
+The ACM2 is a charge-based physical model. All the large signal characteristics (currents and charges) and the small signal parameters ((trans)conductances and (trans)capacitances) are given by single-piece expressions in all regions of operation. It also preserves the transistor's structural source-drain symmetry.
 
 The model is available for commercial and open-source EDA tools due to the versatility of the Verilog-A language.
-This repository presents the Verilog-A code for the NMOS and PMOS transistors, documentation about the model through papers and reports, and a comparison of the model with PDK models or measurements of the three available open-source processes (Sky130, IHPSG13, and GF180MCU).
+This repository presents the Verilog-A code for NMOS and PMOS transistors, documentation of the model in papers and reports, and a comparison of the model with PDK models or measurements for the three available open-source processes (Sky130, IHPSG13, and GF180MCU).
 
 
-Researchers are kindly requested to include the following citation if the ACM2 model is used in their research.
+Researchers are kindly requested to include the following citation when using the ACM2 model in their research.
 
 D. G. A. Neto et al., "[Design-oriented single-piece 5-DC-parameter MOSFET model](https://ieeexplore.ieee.org/document/10565864)", in IEEE Access, doi: 10.1109/ACCESS.2024.3417316.
 
 [ACM model Report](/docs/ACM_Report_Github.pdf)
 
-More about the ACM2:
-[Integrated Circuit laboratory](https://lci.ufsc.br/) @ Universidade Federal de Santa Catarina
+More about the ACM model:
+[Integrated Circuit Laboratory](https://lci.ufsc.br/) @ Universidade Federal de Santa Catarina
 
 
 ## [Presentations](/docs/presentations/)
 
 This section contains slides from tutorials and presentations related to the ACM2 model.
+
+## Authors
+
+**Deni Germano Alves Neto**¹⁺²  
+**Márcio Cherem Schneider**¹  
+**Manuel J. Barragan**²  
+**Sylvain Bourdel**²  
+**Carlos Galup-Montoro**¹  
+
+### Affiliations
+
+| | |
+| :--- | :--- |
+| <img src="images/UFSC_logo_white2.png" alt="UFSC Logo" height="40"> | ¹ Federal University of Santa Catarina, 88040-900 Florianópolis, Brazil. |
+| <img src="images/TIMA_logo_white.png" alt="TIMA Logo" height="40"> | ² Univ. Grenoble Alpes, Grenoble INP, CNRS, TIMA, 38000 Grenoble, France |
+
+---
 
 ## Contact
 
