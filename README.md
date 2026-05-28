@@ -25,7 +25,7 @@ More about the ACM2:
 [Integrated Circuit laboratory](https://lci.ufsc.br/) @ Universidade Federal de Santa Catarina
 
 
-##[Presentations](/docs/presentations/)
+## [Presentations](/docs/presentations/)
 
 This section contains slides from tutorials and presentations related to the ACM2 model.
 
