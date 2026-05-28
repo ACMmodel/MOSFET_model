@@ -27,11 +27,11 @@ D. G. A. Neto et al., "[Design-oriented single-piece 5-DC-parameter MOSFET model
 This section contains slides from tutorials and presentations related to the ACM2 model.
 
 ## Authors
-[**Deni Germano Alves Neto**](www.linkedin.com/in/deni-alves-neto)¹⁺²  
+[**Deni Germano Alves Neto**](https://www.linkedin.com/in/deni-alves-neto)¹⁺²  
 **Márcio Cherem Schneider**¹  
 **Manuel J. Barragan**²  
 **Sylvain Bourdel**²  
-[**Carlos Galup-Montoro**](www.linkedin.com/in/carlos-galup-montoro-6736185)¹  
+[**Carlos Galup-Montoro**](https://www.linkedin.com/in/carlos-galup-montoro-6736185)¹  
 
 ### Affiliations
 
